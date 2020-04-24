@@ -1,0 +1,62 @@
+/* tags */
+body {
+    background-color: gray;
+}
+
+
+/* klasser */
+.hard {
+    border: solid red 3px;
+    color: red;
+}
+
+.easy {
+    border: solid green 3px;
+    color: green;
+}
+
+.medium {
+    border: solid orange 3px;
+    color: orange;
+}
+
+.fysik {
+    background-image: url("../img/fysik.jpg");
+}
+.matematik {
+    background-image: url("../img/matematik.jpg");
+}
+
+.random {
+    background-image: url("../img/random.jpg");
+}
+.card {
+    text-align: center;
+    width: 20%;
+    float: left;
+    margin: 0 6.5% 0 6.5%;
+}
+
+/* Id */
+
+/* Flere */
+.card div {
+    padding: 0px 0 10px 0;
+}
+
+
+
+.card div ul {
+    padding: 0;
+    list-style: none;
+}
+.card div ul li {
+    display: inline;
+    padding: 0 5px 0 5px;
+    background-color: crimson;
+    border-radius: 10px;
+}
+
+#kort .card {
+    height: 200px;
+}
