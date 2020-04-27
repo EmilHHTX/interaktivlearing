@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/main.css">
     <title>Interaktiv læring</title>
 </head>
+
 <body>
     <div>
         <header>
             <h1>Velkommen til NAVN</h1>
         </header>
-        
+
         <main>
             <!-- Spil menu -->
             <section id="kort">
@@ -28,7 +32,7 @@
                             <li>Matematik</li>
                             <li>Fyisk</li>
                         </ul>
-                        
+
                     </div>
                     <footer>
                         <button>START SPIL</button>
@@ -47,14 +51,14 @@
                         <ul>
                             <li>Matematik</li>
                         </ul>
-                        
+
                     </div>
 
                     <footer>
                         <button>START SPIL</button>
                     </footer>
                 </div>
-                
+
                 <div class="card fysik easy">
                     <header>
                         <h3>Kort title</h3>
@@ -62,18 +66,26 @@
 
                     <div>
                         <p>Jeg er en mega sej teskst</p>
-
                     </div>
                     <footer>
                         <button>START SPIL</button>
                     </footer>
                 </div>
-
             </section>
+
+            <!-- Spil -->
         </main>
-    
+
+        <section>
+            <div id="canvas-container"></div>
+        </section>
+
 
     </div>
-    
+    <!-- End of wrapper div-->
+
+    <!-- Scripts -->
+    <script src="js/sketch.js"></script>
 </body>
+
 </html>
