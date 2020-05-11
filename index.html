@@ -1,91 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body class="bg-gradient-dark">
+
+    <button onclick="test()">Klik her!</button>
+    <header class="bg-dark text-white">
+        <div class="d-flex justify-content-center">
+            <h1>Interaktiv læring</h1>
+        </div>
+    </header>
+
+    <div class="container text-center">
+        <div class="mt-4">
+            <div class="row ">
+                <div class="col-sm-3">
+                    <div class="card border border-danger"> <!-- Svær-->
+                        <div class="card-header">
+                            Header
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Title</h5>
+                            <p class="card-text">Content</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card text-center bprder border-success"> <!-- Nem -->
+                        <div class="card-header">
+                            Header
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Title</h5>
+                            <p class="card-text">Content</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card text-center bprder border-warning"> <!-- medium  -->
+                        <div class="card-header">
+                            Header
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Title</h5>
+                            <p class="card-text">Content</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card text-center bprder border-dark"> <!-- Random -->
+                        <div class="card-header">
+                            Header
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Title</h5>
+                            <p class="card-text">Content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4"> <!-- Indeholder <p> der skal have tekst som forklarer spillet -->
+            <div class="col-sm-12"><p id="text-spil"></p></div>
+        </div>
+        
+        <div class="mt-4 d-flex justify-content-center align-items-center" id="canvas-container"></div> <!-- Box for canvas -->
+    </div>
+
+    <!-- Optional JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/main.css">
-    <title>Interaktiv læring</title>
-</head>
-
-<body>
-    <div>
-        <header>
-            <h1>Velkommen til NAVN</h1>
-        </header>
-
-        <main>
-            <!-- Spil menu -->
-            <section id="kort">
-                <div class="card random medium">
-                    <header>
-                        <h3>Tilfældig medium opgave</h3>
-                    </header>
-
-                    <div>
-                        <p>Det her er en opgave af medium sværhedsgrad</p>
-                        <p>Der bliver valgt en tilfældig opgave til dig, mellem disse fag</p>
-                        <ul>
-                            <li>Matematik</li>
-                            <li>Fyisk</li>
-                        </ul>
-
-                    </div>
-                    <footer>
-                        <button>START SPIL</button>
-                    </footer>
-                </div>
-
-                <div class="card matematik hard">
-                    <header>
-                        <h3>Svær matematik opgave</h3>
-                    </header>
-
-                    <div>
-                        <p>Det her er en opgave af medium sværhedsgrad</p>
-                        <p>Denne type opgave er den sværeste du kommer til at støde på, her på denne hjemmeside</p>
-
-                        <ul>
-                            <li>Matematik</li>
-                        </ul>
-
-                    </div>
-
-                    <footer>
-                        <button>START SPIL</button>
-                    </footer>
-                </div>
-
-                <div class="card fysik easy">
-                    <header>
-                        <h3>Kort title</h3>
-                    </header>
-
-                    <div>
-                        <p>Jeg er en mega sej teskst</p>
-                    </div>
-                    <footer>
-                        <button>START SPIL</button>
-                    </footer>
-                </div>
-            </section>
-
-            <!-- Spil -->
-        </main>
-
-        <section>
-            <div id="canvas-container"></div>
-        </section>
-
-
-    </div>
-    <!-- End of wrapper div-->
-
-    <!-- Scripts -->
-    <script src="js/sketch.js"></script>
-</body>
-
+    <script src="sketch.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
 </html>
