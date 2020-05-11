@@ -1,21 +1,11 @@
-
-
-class Spil {
-    constructor(text, navn) {
-        this.text = text;
-        this.navn = navn;
-    }
+var paused = true;
+function test() {
+    paused = false;
 }
 
-let x = 0
+let x = 0;
 
-function setup() {
-    let can = createCanvas(400, 400);
-    can.parent('canvas-container')
-    let width = can.width;
-}
-
-function draw() {
+function run() {
     background(0)
     circle(x, 30, 30);
 
@@ -24,6 +14,21 @@ function draw() {
     if (x > width) {
         x = 0;
     }
+    quiz = new Quiz()
+}
 
 
+
+
+function setup() {
+    let can = createCanvas(500, 500);
+    can.parent('canvas-container');
+    let width = can.width;
+    run();
+}
+
+function draw() {
+    if (paused != true) {
+        
+    }
 }
