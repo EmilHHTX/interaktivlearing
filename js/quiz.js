@@ -1,15 +1,6 @@
-var guessed = null;
 
-function isCorrectAnswer() {
-    console.log(this.value)
-    if (this.value == quiz.currentCorrectAnswer.toString()) {
-        console.log("You guessed it");
-        guessed = true;
-    } else {
-        console.log("You got it wrong");
-        guessed = false;
-    }
-}
+
+
 
 class Quiz {
     constructor() {
@@ -18,19 +9,32 @@ class Quiz {
         this.guesses;
         this.currentCorrectAnswer;
         this.currentQuestion;
-        this.options = [".", ".", "."];
-        this.btns = ["", "", ""];
-        this.generateQuestions();
+        this.options;
+        this.btns = [];
+
     }
+
+
 
     displayText() {
         textSize(32);
-        text(this.currentQuestion, 50, 100);
+        text(this.currentQuestion, 100, 100);
+
+        // indsæt hvor mange rigtige man har osv
     }
 
-
-
+    reset() {
+        var elements = document.getElementsByClassName("hello");
+        while(elements.length > 0){
+            elements[0].parentNode.removeChild(elements[0]);
+        }
+        clear();
+        
+        this.btns = ["", "", ""];
+        this.options = [".", ".", "."];
+    }
     generateQuestions() {
+        this.reset();
         var tal_1 = Math.floor(Math.random() * 100);
         var tal_2 = Math.floor(Math.random() * 100);
 
@@ -38,38 +42,61 @@ class Quiz {
         this.currentQuestion = `Hvad giver: ${tal_1} + ${tal_2}?`
 
         var x = 0;
+        var btxX = 100;
         do {
             var rand = Math.floor(Math.random() * 3);
-            console.log("rand: ", rand);
             if (this.options[rand] == "." && x == 0) {
                 this.options[rand] = this.currentCorrectAnswer;
                 this.btns[rand] = createButton(this.currentCorrectAnswer.toString());
                 this.btns[rand].value = this.currentCorrectAnswer.toString();
                 this.btns[rand].mousePressed(isCorrectAnswer);
+                this.btns[rand].addClass("hello");
+                this.btns[rand].parent('buttons-container');
+                btxX += 132;
             }
             else if (this.options[rand] == ".") {
                 var tempWrongAnswer = this.currentCorrectAnswer - Math.floor(Math.random() * 50);
                 this.options[rand] = tempWrongAnswer;
                 this.btns[rand] = createButton(this.options[rand].toString(), );
                 this.btns[rand].value = tempWrongAnswer.toString();
-
                 this.btns[rand].mousePressed(isCorrectAnswer);
+                this.btns[rand].addClass("hello");
+                this.btns[rand].parent('buttons-container');
+                btxX += 132;
             }
             x++;
         } while (this.options[0] === "." || this.options[1] === "." || this.options[2] === ".");
-        
-
-        for (let i = 0 ; i < 3 ; i++) {
-            console.log(this.btns.value);
-        }
-        
-        /*
-        console.log(this.options);
-        console.log(this.currentCorrectAnswer);
-        console.log(tal_1, tal_2);
-        console.log(this.currentQuestion)
-        */
-
     }
 
+    nextQuestion(correct) {
+        if (correct) {
+            this.correctAnswers++;
+        } else {
+            this.wrongAnswers++;
+        }
+        this.guesses++;
+        this.generateQuestions();
+    }
+
+    gameSetup() {
+        console.log("All set up!")
+        this.generateQuestions();
+    }
+
+    gameRunner() {
+        this.displayText();
+    }
+
+}
+
+function isCorrectAnswer() {
+    var guessed;
+    if (this.value == quiz.currentCorrectAnswer) {
+        guessed = true;
+    } else {
+        console.log("You got it wrong");
+        guessed = false;
+    }
+    quiz.nextQuestion(guessed);
+    
 }

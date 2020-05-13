@@ -1,30 +1,27 @@
 var paused = true;
-let screenwidth = 700;
-let screenheight = 700;
-let objects = [];
-let ettabel = [1,2,3,4,5,6,7,8,98,09]
-var tabeller = []
+var setupGame = true;
 function test() {
     paused = false;
+    setupGame = false;
 }
 
 let x = 0;
-
-function run() {
-}
-
-
-
+var quiz = new Quiz();
 
 function setup() {
+    background(100)
     let can = createCanvas(500, 500);
     can.parent('canvas-container');
     let width = can.width;
-    quiz = new Quiz()
+
 }
 
 function draw() {
+    if (setupGame != true && paused != true) {
+        quiz.gameSetup();
+        setupGame = true;
+    }
     if (paused != true) {
-        run();
+        quiz.gameRunner()
     }
 }
