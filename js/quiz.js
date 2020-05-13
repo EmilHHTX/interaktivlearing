@@ -1,4 +1,4 @@
-var guessed = false;
+var guessed = null;
 
 function isCorrectAnswer() {
     console.log(this.value)
@@ -21,6 +21,11 @@ class Quiz {
         this.options = [".", ".", "."];
         this.btns = ["", "", ""];
         this.generateQuestions();
+    }
+
+    displayText() {
+        textSize(32);
+        text(this.currentQuestion, 50, 100);
     }
 
 
