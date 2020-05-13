@@ -37,7 +37,7 @@ class Falling
     }
   }
   
-  draw()
+  drawObjects()
   { 
     stroke(5)
     noFill()
@@ -94,7 +94,7 @@ class Player
     }
   }
   
-  draw()
+  drawPlayer()
   {
     noFill()
     stroke(5)

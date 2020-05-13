@@ -1,3 +1,16 @@
+var guessed = false;
+
+function isCorrectAnswer() {
+    console.log(this.value)
+    if (this.value == quiz.currentCorrectAnswer.toString()) {
+        console.log("You guessed it");
+        guessed = true;
+    } else {
+        console.log("You got it wrong");
+        guessed = false;
+    }
+}
+
 class Quiz {
     constructor() {
         this.correctAnswers;
@@ -6,9 +19,12 @@ class Quiz {
         this.currentCorrectAnswer;
         this.currentQuestion;
         this.options = [".", ".", "."];
+        this.btns = ["", "", ""];
         this.generateQuestions();
-        this.btns = [];
     }
+
+
+
     generateQuestions() {
         var tal_1 = Math.floor(Math.random() * 100);
         var tal_2 = Math.floor(Math.random() * 100);
@@ -22,26 +38,32 @@ class Quiz {
             console.log("rand: ", rand);
             if (this.options[rand] == "." && x == 0) {
                 this.options[rand] = this.currentCorrectAnswer;
-                this.btns.push(createButton(this.currentCorrectAnswer))
-                // add attributes to btns
-                // https://p5js.org/reference/#/p5/createButton
+                this.btns[rand] = createButton(this.currentCorrectAnswer.toString());
+                this.btns[rand].value = this.currentCorrectAnswer.toString();
+                this.btns[rand].mousePressed(isCorrectAnswer);
             }
             else if (this.options[rand] == ".") {
-                this.options[rand] = this.currentCorrectAnswer - Math.floor(Math.random() * 50);
-                this.btns.push(createButton(this.options.rand))
-                // add attributes to btns
-                // https://p5js.org/reference/#/p5/createButton
+                var tempWrongAnswer = this.currentCorrectAnswer - Math.floor(Math.random() * 50);
+                this.options[rand] = tempWrongAnswer;
+                this.btns[rand] = createButton(this.options[rand].toString(), );
+                this.btns[rand].value = tempWrongAnswer.toString();
+
+                this.btns[rand].mousePressed(isCorrectAnswer);
             }
             x++;
         } while (this.options[0] === "." || this.options[1] === "." || this.options[2] === ".");
         
 
+        for (let i = 0 ; i < 3 ; i++) {
+            console.log(this.btns.value);
+        }
         
-
+        /*
         console.log(this.options);
         console.log(this.currentCorrectAnswer);
         console.log(tal_1, tal_2);
         console.log(this.currentQuestion)
+        */
 
     }
 
