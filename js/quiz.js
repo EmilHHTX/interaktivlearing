@@ -46,6 +46,7 @@ class Quiz {
         do {
             var rand = Math.floor(Math.random() * 3);
             if (this.options[rand] == "." && x == 0) {
+                
                 this.options[rand] = this.currentCorrectAnswer;
                 this.btns[rand] = createButton(this.currentCorrectAnswer.toString());
                 this.btns[rand].value = this.currentCorrectAnswer.toString();
@@ -53,8 +54,9 @@ class Quiz {
                 this.btns[rand].addClass("hello");
                 this.btns[rand].parent('buttons-container');
                 btxX += 132;
-            }
-            else if (this.options[rand] == ".") {
+            
+            } else if (this.options[rand] == ".") {
+                
                 var tempWrongAnswer = this.currentCorrectAnswer - Math.floor(Math.random() * 50);
                 this.options[rand] = tempWrongAnswer;
                 this.btns[rand] = createButton(this.options[rand].toString(), );
@@ -63,8 +65,11 @@ class Quiz {
                 this.btns[rand].addClass("hello");
                 this.btns[rand].parent('buttons-container');
                 btxX += 132;
+            
             }
+            
             x++;
+        
         } while (this.options[0] === "." || this.options[1] === "." || this.options[2] === ".");
     }
 
