@@ -6,3 +6,12 @@
 .notHidden {
     display: block;
 }
+
+.correct {
+    background-color: green;
+
+}
+
+.wrong {
+    background-color: red;
+}

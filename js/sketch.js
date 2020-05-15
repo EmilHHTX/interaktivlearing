@@ -9,7 +9,6 @@ let x = 0;
 var quiz = new Quiz();
 
 function setup() {
-    background(100)
     let can = createCanvas(500, 500);
     can.parent('canvas-container');
     let width = can.width;

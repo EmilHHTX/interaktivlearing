@@ -1,24 +1,34 @@
-
-
-
-
 class Quiz {
     constructor() {
-        this.correctAnswers;
-        this.wrongAnswers;
-        this.guesses;
+        this.correctAnswers = 0;
+        this.wrongAnswers = 0;
+        this.guesses = 0;
         this.currentCorrectAnswer;
         this.currentQuestion;
         this.options;
-        this.btns = [];
+        this.btns;
+
+    }
+
+    createButtons(index, answer) {
+        this.options[index] = answer
+        this.btns[index] = createButton(answer.toString());
+        this.btns[index].value = answer.toString();
+        this.btns[index].mousePressed(isCorrectAnswer);
+        this.btns[index].addClass("hello");
+        this.btns[index].parent('buttons-container');
 
     }
 
 
-
     displayText() {
         textSize(32);
-        text(this.currentQuestion, 100, 100);
+        text(this.currentQuestion, 120, 100);
+        textSize(20);
+        text(`Spørgsmål stillet: ${this.guesses}`, 165, 150)
+        text(`Rigtige svar: ${this.correctAnswers}`, 185, 200)
+        text(`Forkerte svar: ${this.wrongAnswers}`, 180, 250)
+        
 
         // indsæt hvor mange rigtige man har osv
     }
@@ -35,46 +45,45 @@ class Quiz {
     }
     generateQuestions() {
         this.reset();
+        var dup = false;
+        var trued = false;
         var tal_1 = Math.floor(Math.random() * 100);
         var tal_2 = Math.floor(Math.random() * 100);
 
         this.currentCorrectAnswer = tal_1 + tal_2;
         this.currentQuestion = `Hvad giver: ${tal_1} + ${tal_2}?`
-
+        console.log("sasfdasfas")
         var x = 0;
-        var btxX = 100;
         do {
-            var rand = Math.floor(Math.random() * 3);
-            if (this.options[rand] == "." && x == 0) {
-                
-                this.options[rand] = this.currentCorrectAnswer;
-                this.btns[rand] = createButton(this.currentCorrectAnswer.toString());
-                this.btns[rand].value = this.currentCorrectAnswer.toString();
-                this.btns[rand].mousePressed(isCorrectAnswer);
-                this.btns[rand].addClass("hello");
-                this.btns[rand].parent('buttons-container');
-                btxX += 132;
-            
-            } else if (this.options[rand] == ".") {
-                
-                var tempWrongAnswer = this.currentCorrectAnswer - Math.floor(Math.random() * 50);
-                this.options[rand] = tempWrongAnswer;
-                this.btns[rand] = createButton(this.options[rand].toString(), );
-                this.btns[rand].value = tempWrongAnswer.toString();
-                this.btns[rand].mousePressed(isCorrectAnswer);
-                this.btns[rand].addClass("hello");
-                this.btns[rand].parent('buttons-container');
-                btxX += 132;
-            
+            if (x != 0 ) {
+                this.reset();
             }
-            
+            for (var x = 0; x < 3; x++) {
+                console.log("haha");
+                var tempWrongAnswer = this.currentCorrectAnswer - Math.floor(Math.random() * 50);
+                var rand = Math.floor(Math.random() * 3);
+                if (rand == 0 && dup != true) {
+                    console.log("0");
+                    this.createButtons(rand, this.currentCorrectAnswer)
+                    trued = true;
+                    dup = true;
+                } else {
+                    var rand2 = Math.floor(Math.random() * 2);
+                    if (rand2 == 0) {
+                        console.log("2");
+                        this.createButtons(1, tempWrongAnswer)
+                    } else {
+                        console.log("3");
+                        this.createButtons(2, tempWrongAnswer)
+                    }
+                }
+            }
             x++;
+        } while (trued != true && dup != true);
         
-        } while (this.options[0] === "." || this.options[1] === "." || this.options[2] === ".");
     }
-
     nextQuestion(correct) {
-        if (correct) {
+        if (correct != false) {
             this.correctAnswers++;
         } else {
             this.wrongAnswers++;
@@ -94,12 +103,25 @@ class Quiz {
 
 }
 
+
+function sleep(miliseconds) {
+    var currentTime = new Date().getTime();
+ 
+    while (currentTime + miliseconds >= new Date().getTime()) {
+    }
+ }
+
+
 function isCorrectAnswer() {
     var guessed;
     if (this.value == quiz.currentCorrectAnswer) {
+        console.log("correct!")
+        this.style.background = '#000000';
+        console.log(this.value)
         guessed = true;
     } else {
         console.log("You got it wrong");
+        this.addClass = "wrong"
         guessed = false;
     }
     quiz.nextQuestion(guessed);
