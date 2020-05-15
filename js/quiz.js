@@ -1,3 +1,35 @@
+let currentCorrect = false;
+let isTrue = false;
+var ts = Date.now();
+
+function sleep(miliseconds) {
+    var currentTime = new Date().getTime();
+ 
+    while (currentTime + miliseconds >= new Date().getTime()) {
+    }
+ }
+
+
+function isCorrectAnswer() {
+    var guessed;
+    if (this.value == quiz.currentCorrectAnswer) {
+        console.log("correct!")
+        this.style.background = '#000000';
+        console.log(this.value)
+        guessed = true;
+        isTrue = true;
+        ts = Date.now();
+    } else {
+        console.log("You got it wrong");
+        this.addClass = "wrong"
+        guessed = false;
+        isTrue = false;
+        ts = Date.now();
+    }
+    currentCorrect = true;
+    quiz.nextQuestion(guessed);
+    
+}
 class Quiz {
     constructor() {
         this.correctAnswers = 0;
@@ -22,12 +54,26 @@ class Quiz {
 
 
     displayText() {
+        console.log(Date.now() - ts)
+        if (currentCorrect == true && Date.now() - ts < 2000) {
+            if (isTrue) {
+                text(`Du svarede rigtigt`, 180, 300);
+            } else {
+                text(`Prøv igen`, 180, 300);
+            }
+            
+            
+        } else {
+            currentCorrect == false
+            clear();
+        }
         textSize(32);
         text(this.currentQuestion, 120, 100);
         textSize(20);
         text(`Spørgsmål stillet: ${this.guesses}`, 165, 150)
         text(`Rigtige svar: ${this.correctAnswers}`, 185, 200)
         text(`Forkerte svar: ${this.wrongAnswers}`, 180, 250)
+        
         
 
         // indsæt hvor mange rigtige man har osv
@@ -52,28 +98,23 @@ class Quiz {
 
         this.currentCorrectAnswer = tal_1 + tal_2;
         this.currentQuestion = `Hvad giver: ${tal_1} + ${tal_2}?`
-        console.log("sasfdasfas")
         var x = 0;
         do {
             if (x != 0 ) {
                 this.reset();
             }
             for (var x = 0; x < 3; x++) {
-                console.log("haha");
                 var tempWrongAnswer = this.currentCorrectAnswer - Math.floor(Math.random() * 50);
                 var rand = Math.floor(Math.random() * 3);
                 if (rand == 0 && dup != true) {
-                    console.log("0");
                     this.createButtons(rand, this.currentCorrectAnswer)
                     trued = true;
                     dup = true;
                 } else {
                     var rand2 = Math.floor(Math.random() * 2);
                     if (rand2 == 0) {
-                        console.log("2");
                         this.createButtons(1, tempWrongAnswer)
                     } else {
-                        console.log("3");
                         this.createButtons(2, tempWrongAnswer)
                     }
                 }
@@ -104,26 +145,3 @@ class Quiz {
 }
 
 
-function sleep(miliseconds) {
-    var currentTime = new Date().getTime();
- 
-    while (currentTime + miliseconds >= new Date().getTime()) {
-    }
- }
-
-
-function isCorrectAnswer() {
-    var guessed;
-    if (this.value == quiz.currentCorrectAnswer) {
-        console.log("correct!")
-        this.style.background = '#000000';
-        console.log(this.value)
-        guessed = true;
-    } else {
-        console.log("You got it wrong");
-        this.addClass = "wrong"
-        guessed = false;
-    }
-    quiz.nextQuestion(guessed);
-    
-}
