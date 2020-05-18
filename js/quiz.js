@@ -64,6 +64,7 @@ class Quiz {
             
             
         } else {
+            isTrue = false;
             currentCorrect == false
             clear();
         }
