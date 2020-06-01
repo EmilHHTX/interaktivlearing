@@ -15,7 +15,6 @@ function isCorrectAnswer() {
     if (this.value == quiz.currentCorrectAnswer) {
         console.log("correct!")
         this.style.background = '#000000';
-        console.log(this.value)
         guessed = true;
         isTrue = true;
         ts = Date.now();
@@ -54,7 +53,6 @@ class Quiz {
 
 
     displayText() {
-        console.log(Date.now() - ts)
         if (currentCorrect == true && Date.now() - ts < 2000) {
             if (isTrue) {
                 text(`Du svarede rigtigt`, 180, 300);
@@ -143,6 +141,18 @@ class Quiz {
         this.displayText();
     }
 
+}
+var quiz = new Quiz()
+
+function setup() {
+    let can = createCanvas(500, 500);
+    can.parent('canvas-container');
+    quiz.gameSetup();
+
+}
+
+function draw() {
+    quiz.gameRunner();
 }
 
 

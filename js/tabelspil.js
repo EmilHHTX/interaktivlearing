@@ -100,18 +100,8 @@ class Player {
     noStroke()
     circle(this.x + 3, this.y - 80, this.size);
     image(img, this.x - 55, this.y - 150, 125, 150);
-
-
   }
-
 }
-
-// I funktionen preload får vi programmet til at indlæse billedfilerne der skal bruges som det første for at optimerer programmet mest muligt.
-function preload() {
-  img = loadImage('progeksamentingninjafærdigcropped.png');
-  backimg = loadImage('japanese-landscape-drawing-65.jpg');
-}
-
 // Denne funktion bruger vi til at skabe en ny liste af objekter fra "Falling" classen, denne funktion er meget vigtig da den bliver udført hver gang objekterne rammer bunden af skærmen.
 function createFalling(nummer) {
   let numberOfFalling = 4
@@ -132,17 +122,22 @@ function setupspil() {
 
 }
 
+// I funktionen preload får vi programmet til at indlæse billedfilerne der skal bruges som det første for at optimerer programmet mest muligt.
+function preload() {
+  img = loadImage('progeksamentingninjaferdigcropped.png');
+  backimg = loadImage('japser.jpg');
+}
 
 // setup funktionen er essentiel i p5 det er en function der kun kører en enkelt gang efter der bliver trykket på p5's startknap. I denne funktion bruger vi setupspil-funktionen og opsætter en reset-knap.
 function setup() {
-  setupspil()
+  setupspil();
   button = createButton('Reset');
   button.mousePressed(setupspil);
 }
 
 // Draw commanden er igen en basis funktion der bliver kørt flere gange i sekundet. 
 function draw() {
-  background(255, 255, 255);
+  background(255, 255, 0);
   image(backimg, 0, 0, screenwidth, screenheight);
   player.draw();
   player.move();

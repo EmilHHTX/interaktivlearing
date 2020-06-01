@@ -1,3 +1,6 @@
+let screenwidth = 700;
+let screenheight = 700;
+
 var paused = true;
 var setupGame = true;
 function test() {
@@ -5,9 +8,20 @@ function test() {
     setupGame = false;
 }
 
-let x = 0;
-var quiz = new Quiz();
 
+class Game {
+    constructor(runner) {
+        this.runner;
+    }
+}
+
+
+
+let x = 0;
+var tabelSpil = new TabelSpil(new Player());
+var quiz = new Quiz();
+var game = new Game();
+game.runner = tabelSpil;
 function setup() {
     let can = createCanvas(500, 500);
     can.parent('canvas-container');
@@ -17,10 +31,10 @@ function setup() {
 
 function draw() {
     if (setupGame != true && paused != true) {
-        quiz.gameSetup();
+        game.runner.gameSetup();
         setupGame = true;
     }
     if (paused != true) {
-        quiz.gameRunner()
+        game.runner.gameRunner()
     }
 }
