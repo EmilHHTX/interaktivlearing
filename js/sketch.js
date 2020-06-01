@@ -8,15 +8,6 @@ function test() {
     setupGame = false;
 }
 
-
-class Game {
-    constructor(runner) {
-        this.runner;
-    }
-}
-
-
-
 let x = 0;
 var tabelSpil = new TabelSpil(new Player());
 var quiz = new Quiz();

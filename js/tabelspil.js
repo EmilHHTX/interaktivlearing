@@ -115,7 +115,8 @@ function createFalling(nummer) {
 
 // Functionen setupspil gør det muligt for os at have en reset knap der genstarter spillet med en ny tabel osv.
 function setupspil() {
-  createCanvas(screenwidth, screenheight);
+  var can = createCanvas(screenwidth, screenheight);
+  can.parent('canvas-container');
   createFalling(tabelnumber)
   player = new Player()
   whichTabel = Math.floor(Math.random() * 10);
@@ -125,8 +126,8 @@ function setupspil() {
 
 // I funktionen preload får vi programmet til at indlæse billedfilerne der skal bruges som det første for at optimerer programmet mest muligt.
 function preload() {
-  img = loadImage('progeksamentingninjaferdigcropped.png');
-  backimg = loadImage('japser.jpg');
+  img = loadImage('../js/progeksamentingninjaferdigcropped.png');
+  backimg = loadImage('../js/japser.jpg');
 }
 
 // setup funktionen er essentiel i p5 det er en function der kun kører en enkelt gang efter der bliver trykket på p5's startknap. I denne funktion bruger vi setupspil-funktionen og opsætter en reset-knap.
