@@ -93,6 +93,14 @@ class Player {
     if (keyIsDown(RIGHT_ARROW)) {
       this.x += 5
     }
+
+    if (this.x > screenwidth) {
+      this.x = screenwidth
+    }
+
+    if (this.x < 0) {
+      this.x = 0
+    }
   }
 
   // I draw commanden tegner vi spilleren, vi har valgt at indsætte et billede til spilleren, dog har vi igen tegnet en "usynlig" cirkel som følger positionen af spilleren, vi bruger en cirkel da det simplificerer collision-detection processen 
