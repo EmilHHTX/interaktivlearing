@@ -3,6 +3,7 @@ let screenwidth = 700;
 let screenheight = 700;
 let objects = [];
 let img;
+let backimg;
 // Da vi skal arbejde med tabeller i dette program laver vi "en liste med lister i sig" som inde holder alle de 10 grundtabeller.
 var tabeller = []
 for (let y = 1; y <= 10; y++) {
