@@ -68,13 +68,9 @@ class Quiz {
         textSize(32);
         text(this.currentQuestion, 120, 100);
         textSize(20);
-        text(`Spørgsmål stillet: ${this.guesses}`, 165, 150)
-        text(`Rigtige svar: ${this.correctAnswers}`, 185, 200)
-        text(`Forkerte svar: ${this.wrongAnswers}`, 180, 250)
-        
-        
-
-        // indsæt hvor mange rigtige man har osv
+        text(`Spørgsmål stillet: ${this.guesses}`, 165, 150);
+        text(`Rigtige svar: ${this.correctAnswers}`, 185, 200);
+        text(`Forkerte svar: ${this.wrongAnswers}`, 180, 250);
     }
 
     reset() {
@@ -91,18 +87,36 @@ class Quiz {
         this.reset();
         var dup = false;
         var trued = false;
+
+        vpar operator;
+
         var tal_1 = Math.floor(Math.random() * 100);
         var tal_2 = Math.floor(Math.random() * 100);
 
-        this.currentCorrectAnswer = tal_1 + tal_2;
-        this.currentQuestion = `Hvad giver: ${tal_1} + ${tal_2}?`
+        var randOperator = Math.floor(Math.random() * 2);
+
+        if (randOperator == 1) {
+            this.currentCorrectAnswer = tal_1 + tal_2;
+            operator = "+";
+        } else {
+            this.currentCorrectAnswer = tal_1 - tal_2;
+            operator = "-";
+        } 
+        this.currentQuestion = `Hvad giver: ${tal_1} ${operator} ${tal_2}?`
         var x = 0;
         do {
             if (x != 0 ) {
                 this.reset();
             }
             for (var x = 0; x < 3; x++) {
-                var tempWrongAnswer = this.currentCorrectAnswer - Math.floor(Math.random() * 50);
+                var tempWrongAnswer;
+                var randOperator = Math.floor(Math.random() * 2);
+                console.log(randOperator);
+                if (randOperator == 1) {
+                    tempWrongAnswer = this.currentCorrectAnswer - Math.floor(Math.random() * 50);
+                } else {
+                    tempWrongAnswer = this.currentCorrectAnswer + Math.floor(Math.random() * 50);
+                } 
                 var rand = Math.floor(Math.random() * 3);
                 if (rand == 0 && dup != true) {
                     this.createButtons(rand, this.currentCorrectAnswer)
@@ -111,9 +125,9 @@ class Quiz {
                 } else {
                     var rand2 = Math.floor(Math.random() * 2);
                     if (rand2 == 0) {
-                        this.createButtons(1, tempWrongAnswer)
+                        this.createButtons(1, tempWrongAnswer);
                     } else {
-                        this.createButtons(2, tempWrongAnswer)
+                        this.createButtons(2, tempWrongAnswer);
                     }
                 }
             }
