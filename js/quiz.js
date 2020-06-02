@@ -48,7 +48,6 @@ class Quiz {
         this.btns[index].mousePressed(isCorrectAnswer);
         this.btns[index].addClass("hello");
         this.btns[index].parent('buttons-container');
-
     }
 
 
