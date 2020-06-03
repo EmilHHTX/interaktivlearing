@@ -88,7 +88,7 @@ class Quiz {
         var dup = false;
         var trued = false;
 
-        vpar operator;
+        var operator;
 
         var tal_1 = Math.floor(Math.random() * 100);
         var tal_2 = Math.floor(Math.random() * 100);
@@ -155,16 +155,22 @@ class Quiz {
     }
 
 }
-var quiz = new Quiz()
+var quiz = new Quiz();
+var screenwidth = 500;
+var screenheight =  500;
+function preload() {
+    img = loadImage('../js/progeksamentingninjaferdigcropped.png');
+  }
 
 function setup() {
-    let can = createCanvas(500, 500);
+    let can = createCanvas(screenwidth, screenheight);
     can.parent('canvas-container');
     quiz.gameSetup();
 
 }
 
 function draw() {
+    image(img, 0, 0, screenwidth, screenheight);
     quiz.gameRunner();
 }
 
