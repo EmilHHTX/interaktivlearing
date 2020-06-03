@@ -160,7 +160,7 @@ var screenwidth = 500;
 var screenheight =  500;
 var img;
 function preload() {
-    img = loadImage('../js/progeksamentingninjaferdigcropped.png');
+    img = loadImage('../js/spog.png');
   }
 
 function setup() {
@@ -171,6 +171,7 @@ function setup() {
 }
 
 function draw() {
+    console.log("billede inde");
     image(img, 0, 0, screenwidth, screenheight);
     quiz.gameRunner();
 }
