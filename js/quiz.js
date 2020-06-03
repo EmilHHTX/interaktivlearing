@@ -158,6 +158,7 @@ class Quiz {
 var quiz = new Quiz();
 var screenwidth = 500;
 var screenheight =  500;
+var img;
 function preload() {
     img = loadImage('../js/progeksamentingninjaferdigcropped.png');
   }
