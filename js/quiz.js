@@ -65,12 +65,14 @@ class Quiz {
             currentCorrect == false
             clear();
         }
+        image(img, 0, 0, screenwidth, screenheight);
         textSize(32);
         text(this.currentQuestion, 120, 100);
         textSize(20);
         text(`Spørgsmål stillet: ${this.guesses}`, 165, 150);
         text(`Rigtige svar: ${this.correctAnswers}`, 185, 200);
         text(`Forkerte svar: ${this.wrongAnswers}`, 180, 250);
+        
     }
 
     reset() {
@@ -158,7 +160,7 @@ class Quiz {
 var quiz = new Quiz();
 var screenwidth = 500;
 var screenheight =  500;
-var img;
+let img;
 function preload() {
     img = loadImage('../js/spog.png');
   }
@@ -172,7 +174,6 @@ function setup() {
 
 function draw() {
     console.log("billede inde");
-    image(img, 0, 0, screenwidth, screenheight);
     quiz.gameRunner();
 }
 
