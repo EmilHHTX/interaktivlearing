@@ -62,9 +62,7 @@ class Quiz {
 
     // Funktion der indsætter alt den tekst der vises på skærmen
     displayText() {
-
         // Tjekker om man har svaret det sidste spørgsmål korrekt og om der er gået mere end 2 sekunder
-        image(img, 0, 0, screenwidth, screenheight);
         if (currentCorrect == true && Date.now() - ts < 2000) {
             // Hvis den ovenstående statement er true så tjekker den så indsætter den tekst alt efter om man svarede rigtigt
             // på det pågældende spørgsmål
@@ -81,6 +79,7 @@ class Quiz {
             // "clear" er en indbygget funktion der kommer med P5 frameworket 
             clear();
         }
+        image(img, 0, 0, screenwidth, screenheight);
         // indsætter et billede som baggrund på skærmen
         
         // indsætter alt tekst på skærmen og giver det rigtige font-størrelser
